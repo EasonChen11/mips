@@ -1,4 +1,8 @@
 # MIPS textbook
+
+[![hackmd-github-sync-badge](https://hackmd.io/8n2JdqOVR6iX5pJkUD-d-g/badge)](https://hackmd.io/8n2JdqOVR6iX5pJkUD-d-g)
+
+https://github.com/EasonChen11/mips
 ## 基礎配置
 程序通常包含.data section 和.text section
 ```assembly=
@@ -22,11 +26,12 @@ name: .type content
 ## 常用指令集
 
 
-| 指令 | 格式            | mean                                                       |
-| ---- | --------------- | ---------------------------------------------------------- |
-| li   | li rd ,number   | rd 直接存入number                                          |
-| lw   | lw rd ,adress   | 把address(地址)內所存的值存入rd                            |
-| la   | la rd ,adress   | 把address(地址)存入rd ->直接存地址                         |
+| 指令 | 格式          | mean                               |
+| ---- | ------------- | ---------------------------------- |
+| li   | li rd ,number | rd 直接存入number                  |
+| lw   | lw rd ,adress | 把address(地址)內所存的值存入rd    |
+| lwc1 | lw rd ,adress | 因為float 和double記憶體在c1       |
+| la   | la rd ,adress | 把address(地址)存入rd ->直接存地址 |
 
 
 ### 運算
@@ -66,3 +71,15 @@ name: .type content
 | read integer  | 5           |                                                  | $v0 contains integer read |
 | read float    | 6           |                                                  | $f0 contains float read   |
 | read double   | 7           |                                                  | $f0 contains double read  |
+
+## 暫存器比較
+
+
+| 暫存器     | 功能                                                                                                   | 備註                           |
+| ---------- | ------------------------------------------------------------------------------------------------------ | ------------------------------ |
+| $v0        | 系統功能 [v0功能](#v0-%E6%8C%87%E4%BB%A4%E9%9B%86syscall) |                                |
+| $a0 ~ $a3  |                                                                                                        |                                |
+| $t0 ~ $t9  |                                                                                                        |                                |
+| $s0 ~ $s7  |                                                                                                        |                                |
+| $f0 ~ $f31 | 暫存flat or double                                                                                     | 存入時語法為 lwc1 ... 同lw語法 |
+
