@@ -31,46 +31,49 @@ name: .type content
 | li   | li rd ,number | rd 直接存入number                  |
 | lw   | lw rd ,adress | 把address(地址)內所存的值存入rd    |
 | lwc1 | lw rd ,adress | 因為float 和double記憶體在c1       |
+| ldc1 | lw rd ,adress | load double to c1                  |
 | la   | la rd ,adress | 把address(地址)存入rd ->直接存地址 |
 
 
 ### 運算
 | 指令 | 格式            | mean                                                       |
 | ---- | --------------- | ---------------------------------------------------------- |
-| add  | $t0,$t1,$t2     | $t0 = $t1 + $t2;   add as signed (2's complement) integers |
-| sub  | sub $t2,$t3,$t4 | $t2 = $t3 - $t4                                            |
-| addi | $t2,$t3, 5      | $t2 = $t3 + 5;   "add immediate" (no sub immediate)        |
-| addu | $t1,$t6,$t7     | $t1 = $t6 + $t7;   add as unsigned integers                |
-| subu | $t1,$t6,$t7     | $t1 = $t6 + $t7;   subtract as unsigned integers           |
-| div  | $t5,$t6         | Lo = $t5 / $t6   (integer quotient)                        |
-| move | $t2,$t3         | $t2 = $t3                                                  |
-
+| add  | $t0,    $t1,    $t2     | $t0 = $t1 + $t2;   add as signed (2's complement) integers |
+| sub  | sub $t2,    $t3,    $t4 | $t2 = $t3 - $t4                                            |
+| addi | $t2,    $t3, 5      | $t2 = $t3 + 5;   "add immediate" (no sub immediate)        |
+| addu | $t1,    $t6,    $t7     | $t1 = $t6 + $t7;   add as unsigned integers                |
+| subu | $t1,    $t6,    $t7     | $t1 = $t6 + $t7;   subtract as unsigned integers           |
+| div  | $t5,    $t6         | Lo = $t5 / $t6   (integer quotient)                        |
+| move | $t2,    $t3         | $t2 = $t3                                                  |
+:::info
+不同型態的vale對應的運算不同，ex.double add use add.d
+:::
 
 ### bool
 | 指令 | 格式            | mean                                                       |
 | ---- | --------------- | ---------------------------------------------------------- |
 | j    | label           | jump to label                                              |
-| beq  | $t0,$t1,target  | branch to target if  $t0 = $t1                             |
-| blt  | $t0,$t1,target  | branch to target if  $t0 < $t1                             |
-| ble  | $t0,$t1,target  | branch to target if  $t0 <= $t1                            |
-| bgt  | $t0,$t1,target  | branch to target if  $t0 > $t1                             |
-| bge  | $t0,$t1,target  | branch to target if  $t0 >= $t1                            |
-| bne  | $t0,$t1,target  | branch to target if  $t0 <> $t1                            |
+| beq  | $t0,    $t1,target  | branch to target if  $t0 = $t1                             |
+| blt  | $t0,    $t1,target  | branch to target if  $t0 < $t1                             |
+| ble  | $t0,    $t1,target  | branch to target if  $t0 <= $t1                            |
+| bgt  | $t0,    $t1,target  | branch to target if  $t0 > $t1                             |
+| bge  | $t0,    $t1,target  | branch to target if  $t0 >= $t1                            |
+| bne  | $t0,    $t1,target  | branch to target if  $t0 != $t1                            |
 
 
 ![](https://i.imgur.com/X63w1xc.png)
 		
 
 ## $v0 指令集syscall
-| Service       | Code in $v0 | Arguments                                        | Result                    |
-| ------------- | ----------- | ------------------------------------------------ | ------------------------- |
-| print integer | 1           | $a0 = integer to print                           |                           |
-| print float   | 2           | $f12 = float to print                            |                           |
-| print double  | 3           | $f12 = double to print                           |                           |
-| print string  | 4           | $a0 = address of null-terminated string to print |                           |
-| read integer  | 5           |                                                  | $v0 contains integer read |
-| read float    | 6           |                                                  | $f0 contains float read   |
-| read double   | 7           |                                                  | $f0 contains double read  |
+| Service       | Code in $v0 | Arguments                                                                  | Result                    |
+| ------------- | ----------- | -------------------------------------------------------------------------- | ------------------------- |
+| print integer | 1           | <font color="#f00">$a0</font> = integer to print                           |                           |
+| print float   | 2           | <font color="#f00">$f12</font> = float to print                            |                           |
+| print double  | 3           | <font color="#f00">$f12</font> = double to print                           |                           |
+| print string  | 4           | <font color="#f00">$a0</font> = address of null-terminated string to print |                           |
+| read integer  | 5           |                                                                            | $v0 contains integer read |
+| read float    | 6           |                                                                            | $f0 contains float read   |
+| read double   | 7           |                                                                            | $f0 contains double read  |
 
 ## 暫存器比較
 
@@ -81,5 +84,5 @@ name: .type content
 | $a0 ~ $a3  |                                                                                                        |                                |
 | $t0 ~ $t9  |                                                                                                        |                                |
 | $s0 ~ $s7  |                                                                                                        |                                |
-| $f0 ~ $f31 | 暫存flat or double                                                                                     | 存入時語法為 lwc1 ... 同lw語法 |
+| $f0 ~ $f31 | 暫存flat or double                                                                                     | 存入時語法為 lwc1 ...  or ldc1 同lw語法 |
 
