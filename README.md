@@ -1,8 +1,14 @@
 # MIPS textbook
 
-[![hackmd-github-sync-badge](https://hackmd.io/8n2JdqOVR6iX5pJkUD-d-g/badge)](https://hackmd.io/8n2JdqOVR6iX5pJkUD-d-g)
+![hackmd-github-sync-badge](https://hackmd.io/8n2JdqOVR6iX5pJkUD-d-g/badge)
 
-https://github.com/EasonChen11/mips
+https://hackmd.io/8n2JdqOVR6iX5pJkUD-d-g
+
+[github](https://github.com/EasonChen11/mips)
+
+[video](https://www.youtube.com/playlist?list=PL5b07qlmA3P6zUdDf-o97ddfpvPFuNa5A)
+
+[指令](https://blog.xuite.net/tzeng015/twblog/113272086-MIPS+%E6%8C%87%E4%BB%A4%E9%9B%86#)
 ## 基礎配置
 程序通常包含.data section 和.text section
 ```assembly=
